@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendW.Views.AfterLogon"
+             Title="AfterLogon">
+    <StackLayout>
+        <!-- First Frame -->
+        <Frame BackgroundColor="SkyBlue"
+           Padding="10"
+           Margin="10">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Frame1_Tapped" NumberOfTapsRequired="1"/>
+            </Frame.GestureRecognizers>
+            <Label Text="Agendamento" 
+             VerticalOptions="CenterAndExpand" 
+             HorizontalOptions="CenterAndExpand" />
+        </Frame>
+
+        <!-- Second Frame -->
+        <Frame BackgroundColor="LightGreen"
+           Padding="10"
+           Margin="10">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Frame2_Tapped" NumberOfTapsRequired="1"/>
+            </Frame.GestureRecognizers>
+            <Label Text="Administrativo" 
+             VerticalOptions="CenterAndExpand" 
+             HorizontalOptions="CenterAndExpand" />
+        </Frame>
+    </StackLayout>
+</ContentPage>

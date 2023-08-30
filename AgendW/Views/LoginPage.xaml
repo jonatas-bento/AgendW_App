@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendW.Views.LoginPage"
+             Shell.NavBarIsVisible="True"
+             Title="LoginPage">
+    <Grid  BackgroundColor="#830ad1" RowDefinitions="1*,8*,1*">
+
+        <Image Source="logolargerbackground.png" VerticalOptions="StartAndExpand"
+            HorizontalOptions="StartAndExpand" />
+        
+        
+<Frame x:Name="Frame1" BackgroundColor="#b0ebcb" Grid.Row="0" HorizontalOptions="EndAndExpand" 
+               Padding="0"
+               Margin="0,-85,-85,0"
+               HeightRequest="250"
+               WidthRequest="250"
+               CornerRadius="120">
+        </Frame>
+        <Frame x:Name="Frame2" BackgroundColor="#01bd57" Grid.Row="0" HorizontalOptions="EndAndExpand" 
+       Padding="0"
+       Margin="0,-120,-120,0"
+       HeightRequest="250"
+       WidthRequest="250"
+       CornerRadius="120">
+        </Frame>
+
+        <Frame  CornerRadius="0" BackgroundColor="{x:StaticResource DashboardBackground}"
+               Grid.Row="1" VerticalOptions="CenterAndExpand"
+               Margin="0,0,40,0">
+
+            <VerticalStackLayout>
+                <Label Text="LOGIN" FontSize="28" FontAttributes="Bold" TextColor="#830ad1"
+                       />
+
+                <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
+                    <Grid ColumnDefinitions="25, *" ColumnSpacing="10">
+                        <Image VerticalOptions="Center" Source="email.png" HeightRequest="35" WidthRequest="35"/>
+                        <Entry x:Name="Email" Text="{Binding Email}" TextColor="#830ad1" VerticalOptions="Center"  Placeholder="Email" Grid.Column="1" />
+                    </Grid>
+                </Frame>
+
+                <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
+                    <Grid ColumnDefinitions="25, *" ColumnSpacing="10">
+                        <Image VerticalOptions="Center" Source="password.png" HeightRequest="20" WidthRequest="20"/>
+                        <Entry IsPassword="True" TextColor="Black"  Text="{Binding Password}" VerticalOptions="Center" Placeholder="Password" Grid.Column="1" />
+                    </Grid>
+                </Frame>
+                
+                <Button Text="Login"  BackgroundColor="#01bd57" TextColor="White" CornerRadius="20" Margin="0, 20, 0, 0" Command="{Binding LoginCommand}"/>
+        <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+
+                <Label  Text="Esqueceu a senha?" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Gray" HorizontalTextAlignment="Center" />
+                <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                    <Label Text="Não possui conta?" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Gray" VerticalOptions="Center"/>
+                    <Label Text="Cadastre-se" FontSize="16" Margin="0,10,0,0" 
+                           FontAttributes="Bold"
+                           TextColor="#830ad1">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnLabelTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+        
+
+        <Frame BackgroundColor="#b0ebcb" Grid.Row="2" 
+               VerticalOptions="EndAndExpand"
+               HorizontalOptions="StartAndExpand" 
+       Padding="0"
+        Margin="0, 0, 0, -180"
+       HeightRequest="250"
+       WidthRequest="250"
+       CornerRadius="125">
+
+        </Frame>
+
+        <Frame BackgroundColor="#01bd57" Grid.Row="2" 
+               VerticalOptions="EndAndExpand"
+               HorizontalOptions="StartAndExpand" 
+        Padding="0"
+        Margin="0, 0, 0, -200"    
+        HeightRequest="250"
+        WidthRequest="250"
+        CornerRadius="125">
+
+        </Frame>
+
+    </Grid>
+    
+</ContentPage>
