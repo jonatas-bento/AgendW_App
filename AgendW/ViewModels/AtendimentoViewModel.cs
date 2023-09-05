@@ -17,7 +17,7 @@ namespace AgendW.ViewModels
 {
     public class AtendimentoViewModel : INotifyPropertyChanged
     {
-        private static readonly string BaseUrl = "http://192.168.8.106:5000/api/";
+        private static readonly string BaseUrl = "http://192.168.15.35:5000/api/";
 
         
         public AtendimentoViewModel()
@@ -366,7 +366,7 @@ namespace AgendW.ViewModels
             {
                 using (var client = new HttpClient())
                 {
-                    var json = await client.GetStringAsync($"http://192.168.8.106:5000/api/atendimentos");
+                    var json = await client.GetStringAsync($"http://192.168.1.141:5000/api/atendimentos");
                     var atendimentos = JsonConvert.DeserializeObject<List<Atendimento>>(json);
                     AtendimentosList = new ObservableCollection<Atendimento>(atendimentos);
                 }
@@ -432,7 +432,7 @@ namespace AgendW.ViewModels
                     var content = new StringContent(serializedAtendimento, Encoding.UTF8, "application/json");
 
                     // Since it's an update, you likely need to include the ID in the URL.
-                    var response = await client.PutAsync($"http://192.168.8.106:5000/api/atendimentos/{atendimento.Id}", content);
+                    var response = await client.PutAsync($"http://192.168.15.35:5000/api/atendimentos/{atendimento.Id}", content);
 
                     // Check if the response indicates success.
                     if (!response.IsSuccessStatusCode)
@@ -457,7 +457,7 @@ namespace AgendW.ViewModels
                 using (var client = new HttpClient())
                 {
                     // Call the API endpoint with the specific ID to delete the Atendimento
-                    var response = await client.DeleteAsync($"http://192.168.8.106:5000/api/atendimentos/{id}");
+                    var response = await client.DeleteAsync($"http://192.168.15.35:5000/api/atendimentos/{id}");
 
                     // Check if the response indicates success.
                     if (!response.IsSuccessStatusCode)

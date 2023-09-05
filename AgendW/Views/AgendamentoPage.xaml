@@ -2,22 +2,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AgendW.Views.AgendamentoPage"
-             
+             xmlns:local="clr-namespace:AgendW.Shared"
              >
 
     <!-- Define resource styles for consistent look -->
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="InputLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontSize" Value="Small" />
                 <Setter Property="TextColor" Value="Gray" />
                 <Setter Property="Margin" Value="0,10,0,0" />
             </Style>
 
             <Style x:Key="InputFieldStyle" TargetType="Entry">
-                <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="BackgroundColor" Value="White" />
-                <Setter Property="Margin" Value="0,0,0,10" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="Margin" Value="0,0,0,-10" />
             </Style>
 
             <Style x:Key="ButtonStyle" TargetType="Button">
@@ -33,85 +33,135 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ScrollView BackgroundColor="#01bd57">
-        <StackLayout Padding="20">
-            <!-- General padding -->
-            <Label Text="Realize seu agendamento" TextColor="#830ad1" FontSize="Large" HorizontalTextAlignment="Center"/>
+    <ScrollView BackgroundColor="#830AD1">
+        <Frame BackgroundColor="#EFEFEF" CornerRadius="15" Padding="5">
+            <StackLayout Padding="20">
+                <!-- General padding -->
 
-            <Label Text="Nome" TextColor="#830ad1" Style="{StaticResource InputLabelStyle}"/>
-            <Entry Text="{Binding CurrentAtendimento.NomeCliente}" TextColor="Black" Style="{StaticResource InputFieldStyle}"/>
+                <Label Text="Realize seu agendamento" TextColor="#830ad1" FontSize="Large" HorizontalTextAlignment="Center"/>
 
-            <Label Text="Telefone" TextColor="#830ad1" Style="{StaticResource InputLabelStyle}"/>
-            <Entry Text="{Binding CurrentAtendimento.TelCliente}" TextColor="Black" Style="{StaticResource InputFieldStyle}"/>
+                <Label Text="Nome" TextColor="Black" FontSize="Small" Style="{StaticResource InputLabelStyle}"/>
+                <Frame BackgroundColor="White" BorderColor="Green" CornerRadius="10" Padding="10">
+                    <Entry Text="{Binding CurrentAtendimento.NomeCliente}" TextColor="Black" Style="{StaticResource InputFieldStyle}"/>
+                </Frame>
+                <Label Text="Telefone" TextColor="Black" FontSize="Small" Style="{StaticResource InputLabelStyle}"/>
+                <Frame BackgroundColor="White" BorderColor="Green" CornerRadius="10" Padding="10">
+                    <Entry Text="{Binding CurrentAtendimento.TelCliente}" TextColor="Black" Style="{StaticResource InputFieldStyle}">
+                        <Entry.Behaviors>
+                            <local:PhoneNumberMaskBehavior />
+                        </Entry.Behaviors>
+                    </Entry>
 
-            <Label Text="Email" TextColor="#830ad1" Style="{StaticResource InputLabelStyle}"/>
-            <Entry Text="{Binding CurrentAtendimento.EmailCliente}" TextColor="Black" Style="{StaticResource InputFieldStyle}"/>
+                </Frame>
+                <Label Text="Email" TextColor="Black" FontSize="Small" Style="{StaticResource InputLabelStyle}"/>
+                <Frame BackgroundColor="White" BorderColor="Green" CornerRadius="10" Padding="10">
+                    <Entry Text="{Binding CurrentAtendimento.EmailCliente}" TextColor="Black" Style="{StaticResource InputFieldStyle}"/>
+                </Frame>
+                <Label Text="Modelo" TextColor="Black" FontSize="Small" Style="{StaticResource InputLabelStyle}"/>
+                <Frame BackgroundColor="White" BorderColor="Green"  CornerRadius="10" Padding="10">
+                    <Entry Text="{Binding CurrentAtendimento.ModeloCarro}" TextColor="Black" Style="{StaticResource InputFieldStyle}"/>
+                </Frame>
+                <Label Text="Marca" TextColor="Black" FontSize="Small" Style="{StaticResource InputLabelStyle}"/>
+                <Frame BackgroundColor="White" BorderColor="Green" CornerRadius="10" Padding="10">
+                    <Entry Text="{Binding CurrentAtendimento.MarcaCarro}" TextColor="Black" Style="{StaticResource InputFieldStyle}"/>
+                </Frame>
+                <Label Text="Placa" TextColor="Black" FontSize="Small" Style="{StaticResource InputLabelStyle}"/>
+                <Frame BackgroundColor="White" BorderColor="Green" CornerRadius="10" Padding="10">
+                    <Entry Text="{Binding CurrentAtendimento.PlacaCarro}" TextColor="Black" Style="{StaticResource InputFieldStyle}"/>
+                </Frame>
 
-            <Label Text="Modelo" TextColor="#830ad1" Style="{StaticResource InputLabelStyle}"/>
-            <Entry Text="{Binding CurrentAtendimento.ModeloCarro}" TextColor="Black" Style="{StaticResource InputFieldStyle}"/>
+                <Label Text="Unidade de Atendimento" TextColor="Black" FontSize="Small" Style="{StaticResource InputLabelStyle}"/>
+                <Frame BackgroundColor="White" BorderColor="Green" CornerRadius="10" Padding="10">
+                    <StackLayout>
+                        <Picker SelectedItem="{Binding CurrentAtendimento.UnidadeAtendimento}" Style="{StaticResource InputFieldStyle}">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Bonsucesso</x:String>
+                                    <x:String>Jacarepaguá</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </StackLayout>
+                </Frame>
 
-            <Label Text="Marca" TextColor="#830ad1" Style="{StaticResource InputLabelStyle}"/>
-            <Entry Text="{Binding CurrentAtendimento.MarcaCarro}" TextColor="Black" Style="{StaticResource InputFieldStyle}"/>
+                <Label Text="Horario de Agendamento" TextColor="Black" FontSize="Small" Style="{StaticResource InputLabelStyle}"/>
+                <Frame BackgroundColor="White" BorderColor="Green" Margin="0,0,0,0" CornerRadius="15" Padding="5">
+                    <Grid Padding="10">
+                        <!-- Define columns -->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-            <Label Text="Placa" TextColor="#830ad1" Style="{StaticResource InputLabelStyle}"/>
-            <Entry Text="{Binding CurrentAtendimento.PlacaCarro}" TextColor="Black" Style="{StaticResource InputFieldStyle}"/>
+                        <!-- Data Label and DatePicker -->
+                        <Label Text="Data" 
+               TextColor="Black" 
+               Style="{StaticResource InputLabelStyle}" 
+               Grid.Column="0"/>
+                        <DatePicker Format="dd/MM/yyyy" TextColor="Green"
+                    Date="{Binding CurrentAtendimento.DataDesejadaAtendimento}" 
+                    Grid.Column="1"/>
 
-            <Label Text="Unidade de Atendimento" TextColor="#830ad1" Style="{StaticResource InputLabelStyle}"/>
-            <Picker Title="Selecione uma unidade" SelectedItem="{Binding CurrentAtendimento.UnidadeAtendimento}" Style="{StaticResource InputFieldStyle}">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Bonsucesso</x:String>
-                        <x:String>Jacarepaguá</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+                        <!-- Hora Label and TimePicker -->
+                        <Label Text="Hora" 
+               TextColor="Black" 
+               Style="{StaticResource InputLabelStyle}" 
+               Grid.Column="2"/>
+                        <TimePicker Format="HH:mm" TextColor="Green" 
+                    Time="{Binding HoraAtendimento, Mode=TwoWay}" 
+                    Grid.Column="3"/>
+                    </Grid>
+                </Frame>
 
-            <Label Text="Data" TextColor="#830ad1" Style="{StaticResource InputLabelStyle}"/>
-            <DatePicker Format="dd/MM/yyyy" Date="{Binding CurrentAtendimento.DataDesejadaAtendimento}" />
 
-            <Label Text="Hora" TextColor="#830ad1" Style="{StaticResource InputLabelStyle}"/>
-            <TimePicker Format="HH:mm" Time="{Binding HoraAtendimento, Mode=TwoWay}" />
+                        <Label Text="Descreva a solicitação" TextColor="Black" Style="{StaticResource InputLabelStyle}"/>
+                <Frame BackgroundColor="White" BorderColor="Green" CornerRadius="15">
+                    <StackLayout>
 
-            <Label Text="Descreva a solicitação" TextColor="#830ad1" Style="{StaticResource InputLabelStyle}"/>
-            <Editor Text="{Binding CurrentAtendimento.DescricaoProblema}" BackgroundColor="White" />
+                        <Editor Text="{Binding CurrentAtendimento.DescricaoProblema}" BackgroundColor="White" TextColor="Black"/>
+                    </StackLayout>
+                </Frame>
 
-            <StackLayout Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding CurrentAtendimento.Pneus}" />
-                <Label Text="Pneus" FontSize="Medium" TextColor="#830ad1" Margin="0, 8, 0, 0"/>
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding CurrentAtendimento.Pneus}" Color="Green"/>
+                    <Label Text="Pneus" FontSize="Small" TextColor="Black" Margin="0, 12, 0, 0"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding CurrentAtendimento.Freios}" Color="Green"/>
+                    <Label Text="Freios" FontSize="Small" TextColor="Black" Margin="0, 12, 0, 0"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding CurrentAtendimento.Suspensao}" Color="Green"/>
+                    <Label Text="Suspensão" FontSize="Small" TextColor="Black" Margin="0, 12, 0, 0"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding CurrentAtendimento.AlinhamentoEBalanceamento}" Color="Green"/>
+                    <Label Text="Balanceamento" FontSize="Small" TextColor="Black" Margin="0, 12, 0, 0"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding CurrentAtendimento.TrocaOleo}" Color="Green"/>
+                    <Label Text="Troca de Óleo" FontSize="Small" TextColor="Black" Margin="0, 12, 0, 0"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding CurrentAtendimento.MecanicaLeve}" Color="Green"/>
+                    <Label Text="Mecanica Leve" FontSize="Small" TextColor="Black" Margin="0, 12, 0, 0"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding CurrentAtendimento.RevisaoPadrao}" Color="Green"/>
+                    <Label Text="Revisão Padrão" FontSize="Small" TextColor="Black" Margin="0, 12, 0, 0"/>
+                </StackLayout>
+
+                <Button Text="Salvar" Command="{Binding SaveAtendimentoCommand}" 
+                    CommandParameter="{Binding CurrentAtendimento}" BackgroundColor="#830ad1" CornerRadius="20" Style="{StaticResource ButtonStyle}"/>
             </StackLayout>
-
-            <StackLayout Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding CurrentAtendimento.Freios}" />
-                <Label Text="Freios" FontSize="Medium" TextColor="#830ad1" Margin="0, 8, 0, 0"/>
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding CurrentAtendimento.Suspensao}" />
-                <Label Text="Suspensão" FontSize="Medium" TextColor="#830ad1" Margin="0, 8, 0, 0"/>
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding CurrentAtendimento.AlinhamentoEBalanceamento}" />
-                <Label Text="Balanceamento" FontSize="Medium" TextColor="#830ad1" Margin="0, 8, 0, 0"/>
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding CurrentAtendimento.TrocaOleo}" />
-                <Label Text="Troca de Óleo" FontSize="Medium" TextColor="#830ad1" Margin="0, 8, 0, 0"/>
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding CurrentAtendimento.MecanicaLeve}" />
-                <Label Text="Mecanica Leve" FontSize="Medium" TextColor="#830ad1" Margin="0, 8, 0, 0"/>
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding CurrentAtendimento.RevisaoPadrao}" />
-                <Label Text="Revisão Padrão" FontSize="Medium" TextColor="#830ad1" Margin="0, 8, 0, 0"/>
-            </StackLayout>
-
-            <Button Text="Salvar" Command="{Binding SaveAtendimentoCommand}" 
-                    CommandParameter="{Binding CurrentAtendimento}" BackgroundColor="#830ad1" Style="{StaticResource ButtonStyle}"/>
-        </StackLayout>
+        </Frame>
     </ScrollView>
 </ContentPage>

@@ -2,30 +2,56 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AgendW.Views.AfterLogon"
-             Title="AfterLogon">
-    <StackLayout>
-        <!-- First Frame -->
-        <Frame BackgroundColor="SkyBlue"
-           Padding="10"
-           Margin="10">
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="Frame1_Tapped" NumberOfTapsRequired="1"/>
-            </Frame.GestureRecognizers>
-            <Label Text="Agendamento" 
-             VerticalOptions="CenterAndExpand" 
-             HorizontalOptions="CenterAndExpand" />
-        </Frame>
+             Title="Seja muito bem vindo!">
+    <Grid  BackgroundColor="#830ad1" RowDefinitions="1*,8*,1*">
 
-        <!-- Second Frame -->
-        <Frame BackgroundColor="LightGreen"
-           Padding="10"
-           Margin="10">
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="Frame2_Tapped" NumberOfTapsRequired="1"/>
-            </Frame.GestureRecognizers>
-            <Label Text="Administrativo" 
-             VerticalOptions="CenterAndExpand" 
-             HorizontalOptions="CenterAndExpand" />
+        <Image Source="logolargerbackground.png" VerticalOptions="StartAndExpand"
+        HorizontalOptions="StartAndExpand" />
+        <Frame x:Name="Frame1" BackgroundColor="#01bd57" Grid.Row="0" HorizontalOptions="EndAndExpand" 
+               Padding="0"
+               Margin="0,-85,-85,0"
+               HeightRequest="250"
+               WidthRequest="250"
+               CornerRadius="120">
         </Frame>
-    </StackLayout>
+        <StackLayout VerticalOptions="End"  Grid.Row="1">
+            <!-- First Frame -->
+            <Frame CornerRadius="15" Padding="8" WidthRequest="360" HeightRequest="505" 
+                   BackgroundColor="#EFEFEF"  
+                    HasShadow="True">
+                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" Spacing="30">
+                    <Label Text="Selecione a empresa desejada" FontSize="Large" HorizontalOptions="Center"
+               Margin="0, 0, 0, 20" TextColor="#830AD1"
+               VerticalOptions="StartAndExpand" />
+                    <Image Source="rp.png" VerticalOptions="Start"  HeightRequest="150" WidthRequest="150" HorizontalOptions="CenterAndExpand">
+
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Frame1_Tapped" NumberOfTapsRequired="1"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <!-- Second Frame -->
+                    <Image Source="consultorio.png" HeightRequest="150" 
+                           VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Frame2_Tapped" NumberOfTapsRequired="1"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+        
+
+        <Frame BackgroundColor="#01bd57" Grid.Row="2" 
+        VerticalOptions="EndAndExpand"
+        HorizontalOptions="StartAndExpand" 
+ Padding="0"
+ Margin="0, 0, 0, -200"    
+ HeightRequest="250"
+ WidthRequest="250"
+ CornerRadius="125">
+
+        </Frame>
+    </Grid>
 </ContentPage>

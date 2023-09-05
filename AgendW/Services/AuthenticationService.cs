@@ -10,7 +10,7 @@ namespace AgendW.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
-        private static readonly string BaseUrl = "http://192.168.8.106:5000/api/auth/";
+        private static readonly string BaseUrl = "http://192.168.15.35:5000/api/auth/";
         private static readonly HttpClient _client = new HttpClient();
         public class LoginResponse
         {

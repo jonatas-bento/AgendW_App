@@ -12,6 +12,7 @@ public partial class LoginPage : ContentPage
     public LoginPage(IAuthenticationService authenticationService)
 	{
 		InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
         _authenticationService = authenticationService;
 
         var viewModel = new IdentityViewModel(_authenticationService);
